@@ -17,17 +17,18 @@
                             <th scope="col">Author</th>
                             <th scope="col">Year</th>
                             <th scope="col">ISBN</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="book : ${books}" class="book">
-                            <td th:text="${book.getName()}"></td>
+                            <td th:text="${book.getTitle()}"></td>
                             <td th:text="${book.getPrice()}"></td>
                             <td th:text="${book.getAuthor()}"></td>
                             <td th:text="${book.getYear()}"></td>
                             <td th:text="${book.getIsbn()}"></td>
                             <td class="text-right">
-                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                <th:block sec:authorize="hasAuthority('ADMIN')">
                                     <form th:action="@{'/books/delete/{id}' (id=${book.getId()})}"
                                           th:method="DELETE">
                                         <button type="submit"
@@ -36,7 +37,7 @@
                                         </button>
                                     </form>
                                 </th:block>
-                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                <th:block sec:authorize="hasAuthority('ADMIN')">
                                     <a th:href="@{'/books/edit-form/{id}' (id=${book.getId()})}"
                                        class="btn btn-sm btn-info edit-book">
                                         <i class="fa fa-trash">Edit</i>
@@ -58,7 +59,7 @@
             </div>
             <div class="col mb-3">
                 <div class="row">
-                    <div class="col-sm-12 col-md-12" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <div class="col-sm-12 col-md-12" sec:authorize="hasAuthority('ADMIN')">
                         <a href="/books/add-form" class="btn btn-block btn-dark add-book-btn">
                             Add new book
                         </a>

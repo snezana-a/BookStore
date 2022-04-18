@@ -13,23 +13,25 @@
 
     <div class="container mb-4">
         <div class="row">
-            <div class="col-12" th:if="${products.size() > 0}">
+            <div class="col-12" th:if="${books.size() > 0}">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Product</th>
+                            <th scope="col">Book name</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Manufacturer</th>
-                            <th scope="col">Category</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">ISBN</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="product : ${products}" class="cart-item">
-                            <td th:text="${product.getName()}"></td>
-                            <td th:text="${product.getPrice()}"></td>
-                            <td th:text="${product.getManufacturer() != null} ? ${product.getManufacturer().getName()} : 'No Manufacturer'"></td>
-                            <td th:text="${product.getCategory() != null} ? ${product.getCategory().getName()} : 'No Category'"></td>
+                        <tr th:each="book : ${books}" class="cart-item">
+                            <td th:text="${book.getTitle()}"></td>
+                            <td th:text="${book.getPrice()}"></td>
+                            <td th:text="${book.getAuthor()}"></td>
+                            <td th:text="${book.getYear()}"></td>
+                            <td th:text="${book.getIsbn()}"></td>
                         </tr>
                         </tbody>
                     </table>
