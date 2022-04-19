@@ -10,9 +10,16 @@
             <div class="col-12" th:if="${books.size() > 0}">
                 <div class="table-responsive">
                     <form id="filter-form" th:action="@{/books}" th:method="GET">
-                        <label for="f1">Category</label>
-                        <input id="f1" name="category" />
-                        <button id="filter" type="submit">Filter</button>
+                        <select name="category" class="form-control "  id="category"
+                                placeholder="Category">
+                            <option th:value="Fantasy">Fantasy</option>
+                            <option th:value="SciFi">SciFi</option>
+                            <option th:value="Mystery">Mystery</option>
+                            <option th:value="Thriller">Thirller</option>
+                            <option th:value="Romance">Romance</option>
+                            <option th:value="Western">Western</option>
+                        </select>
+                        <button  class="btn btn-primary" id="filter" type="submit">Filter</button>
                     </form>
                     <table class="table table-striped">
                         <thead>
