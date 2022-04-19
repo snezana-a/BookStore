@@ -1,11 +1,10 @@
 package com.bookstore.models;
 
+import com.bookstore.enumerations.Category;
+import com.bookstore.enumerations.Role;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -25,6 +24,7 @@ public class Book {
 
     private Float price;
 
+<<<<<<< HEAD
     private String category;
 
     private String image;
@@ -32,13 +32,22 @@ public class Book {
 
 
     public Book(Integer isbn, String title, String author, Integer year, Float price, String category, String image) {
+=======
+    @Enumerated(value = EnumType.STRING)
+    private Category category;
+
+    public Book(Integer isbn, String title, String author, Integer year, Float price, Category category) {
+>>>>>>> bb048bbe33bfdd41fe0e336a7c7c0adfa2e0faf9
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.year = year;
         this.price = price;
         this.category = category;
+<<<<<<< HEAD
         this.image = image;
+=======
+>>>>>>> bb048bbe33bfdd41fe0e336a7c7c0adfa2e0faf9
     }
 
     public Book() {

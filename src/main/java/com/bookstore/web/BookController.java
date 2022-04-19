@@ -1,5 +1,6 @@
 package com.bookstore.web;
 
+import com.bookstore.enumerations.Category;
 import com.bookstore.models.Book;
 import com.bookstore.service.BookService;
 import com.bookstore.service.ShoppingCartService;
@@ -25,7 +26,7 @@ public class BookController {
         this.userService = userService;
     }
 
-    @GetMapping
+   /* @GetMapping
     public String getProductPage(@RequestParam(required = false) String error, Model model) {
         if (error != null && !error.isEmpty()) {
             model.addAttribute("hasError", true);
@@ -34,6 +35,21 @@ public class BookController {
         List<Book> books = this.bookService.listAll();
         model.addAttribute("books", books);
         model.addAttribute("bodyContent", "books");
+        return "master-template"; }*/
+
+    @GetMapping
+    public String getProductPage(@RequestParam(required = false) Category category,
+                                 Model model) {
+        List<Book> books;
+        if(category == null){
+            books=bookService.listAll();
+        }
+        else {
+            books = this.bookService.filterByCategory(category);
+        }
+        model.addAttribute("books",books);
+        model.addAttribute("bodyContent", "books");
+       // model.addAttribute("interests",this.interestService.listAll());
         return "master-template";
     }
 
@@ -57,6 +73,7 @@ public class BookController {
     @GetMapping("/add-form")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String addProductPage(Model model) {
+       // model.addAttribute("categories", Category.values());
         model.addAttribute("bodyContent", "add-book");
         return "master-template";
     }
@@ -69,12 +86,20 @@ public class BookController {
             @RequestParam String author,
             @RequestParam Integer year,
             @RequestParam Float price,
+<<<<<<< HEAD
             @RequestParam String category,
             @RequestParam String image) {
         if (id != null) {
             this.bookService.update(id, isbn, title, author,  year,  price, category, image);
         } else {
             this.bookService.create(isbn, title, author,  year,  price, category, image);
+=======
+            @RequestParam Category category) {
+        if (id != null) {
+            this.bookService.update(id, isbn, title, author,  year,  price, category);
+        } else {
+            this.bookService.create(isbn, title, author,  year,  price, category);
+>>>>>>> bb048bbe33bfdd41fe0e336a7c7c0adfa2e0faf9
         }
         return "redirect:/books";
     }
