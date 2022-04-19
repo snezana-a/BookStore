@@ -57,7 +57,6 @@
                                placeholder="Year">
                     </div>
                     <div class="form-group">
-<<<<<<< HEAD
                         <label>Image</label>
                         <input type="text"
                                class="form-control"
@@ -66,16 +65,7 @@
                                th:value="(${book} != null ? ${book.getImage()} : '')"
                                placeholder="Image">
                     </div>
-                    <div class="form-group">
-                        <label>Category</label>
-                        <input type="text"
-                               class="form-control"
-                               id="category"
-                               name="category"
-                               th:value="(${book} != null ? ${book.getCategory()} : '')"
-                               placeholder="Category">
-                    </div>
-=======
+                    <div style="margin-bottom: 15px">
                         <label>Category</label>
                         <select name="category" class="form-control" id="category"
                                 th:value="(${book} != null ? ${book.getCategory().values()} : '')"
@@ -89,7 +79,6 @@
                         </select>
                     </div>
 
->>>>>>> bb048bbe33bfdd41fe0e336a7c7c0adfa2e0faf9
                     <button id="submit" type="submit" class="btn btn-primary">Submit</button>
                     <a type="button" class="btn btn-primary" href="/books">Back</a>
                 </form>

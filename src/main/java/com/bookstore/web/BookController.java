@@ -26,17 +26,6 @@ public class BookController {
         this.userService = userService;
     }
 
-   /* @GetMapping
-    public String getProductPage(@RequestParam(required = false) String error, Model model) {
-        if (error != null && !error.isEmpty()) {
-            model.addAttribute("hasError", true);
-            model.addAttribute("error", error);
-        }
-        List<Book> books = this.bookService.listAll();
-        model.addAttribute("books", books);
-        model.addAttribute("bodyContent", "books");
-        return "master-template"; }*/
-
     @GetMapping
     public String getProductPage(@RequestParam(required = false) Category category,
                                  Model model) {
@@ -49,7 +38,6 @@ public class BookController {
         }
         model.addAttribute("books",books);
         model.addAttribute("bodyContent", "books");
-       // model.addAttribute("interests",this.interestService.listAll());
         return "master-template";
     }
 
@@ -86,20 +74,12 @@ public class BookController {
             @RequestParam String author,
             @RequestParam Integer year,
             @RequestParam Float price,
-<<<<<<< HEAD
-            @RequestParam String category,
+            @RequestParam Category category,
             @RequestParam String image) {
         if (id != null) {
             this.bookService.update(id, isbn, title, author,  year,  price, category, image);
         } else {
             this.bookService.create(isbn, title, author,  year,  price, category, image);
-=======
-            @RequestParam Category category) {
-        if (id != null) {
-            this.bookService.update(id, isbn, title, author,  year,  price, category);
-        } else {
-            this.bookService.create(isbn, title, author,  year,  price, category);
->>>>>>> bb048bbe33bfdd41fe0e336a7c7c0adfa2e0faf9
         }
         return "redirect:/books";
     }

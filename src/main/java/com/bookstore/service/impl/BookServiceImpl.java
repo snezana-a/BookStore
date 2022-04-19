@@ -30,21 +30,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-<<<<<<< HEAD
-    public Book create(Integer isbn, String title, String author, Integer year, Float price, String category, String image) {
+    public Book create(Integer isbn, String title, String author, Integer year, Float price, Category category, String image) {
         return this.bookRepository.save(new Book(isbn, title, author, year, price, category, image));
     }
 
     @Override
-    public Book update(Long id, Integer isbn, String title, String author, Integer year, Float price, String category, String image) {
-=======
-    public Book create(Integer isbn, String title, String author, Integer year, Float price, Category category) {
-        return this.bookRepository.save(new Book(isbn, title, author, year, price,category));
-    }
-
-    @Override
-    public Book update(Long id, Integer isbn, String title, String author, Integer year, Float price, Category category) {
->>>>>>> bb048bbe33bfdd41fe0e336a7c7c0adfa2e0faf9
+    public Book update(Long id, Integer isbn, String title, String author, Integer year, Float price, Category category, String image) {
         Book book = this.findById(id);
 
         book.setIsbn(isbn);
@@ -66,23 +57,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> filter(String title, Integer year, Float price) {
-        if (title == null && year == null && price == null) {
-            return this.bookRepository.findAll();
-        }
-        if (title != null) {
-            return this.bookRepository.findByTitle(title);
-        }
-        if (year != null) {
-            return this.bookRepository.findByYear(year);
-        }
-        else{
-            return this.bookRepository.findByPrice(price);
-        }
-    }
-
-    @Override
     public List<Book> filterByCategory(Category category) {
-        return  this.bookRepository.findByCategory(category);
+        return this.bookRepository.findByCategory(category);
     }
 }

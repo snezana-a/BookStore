@@ -24,30 +24,19 @@ public class Book {
 
     private Float price;
 
-<<<<<<< HEAD
-    private String category;
-
     private String image;
 
-
-
-    public Book(Integer isbn, String title, String author, Integer year, Float price, String category, String image) {
-=======
     @Enumerated(value = EnumType.STRING)
     private Category category;
 
-    public Book(Integer isbn, String title, String author, Integer year, Float price, Category category) {
->>>>>>> bb048bbe33bfdd41fe0e336a7c7c0adfa2e0faf9
+    public Book(Integer isbn, String title, String author, Integer year, Float price, Category category, String image) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.year = year;
         this.price = price;
         this.category = category;
-<<<<<<< HEAD
         this.image = image;
-=======
->>>>>>> bb048bbe33bfdd41fe0e336a7c7c0adfa2e0faf9
     }
 
     public Book() {
@@ -93,11 +82,11 @@ public class Book {
         this.price = price;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
