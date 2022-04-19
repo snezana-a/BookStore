@@ -32,7 +32,6 @@
                             <th scope="col">Year</th>
                             <th scope="col">Price</th>
                             <th scope="col">ISBN</th>
-                            <th scope="col">Category</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -45,7 +44,6 @@
                             <td th:text="${book.getYear()}"></td>
                             <td th:text="${book.getPrice()}"></td>
                             <td th:text="${book.getIsbn()}"></td>
-                            <td th:text="${book.getCategory()}"></td>
                             <td class="text-right">
                                 <th:block sec:authorize="hasAuthority('ADMIN')">
                                     <form th:action="@{'/books/delete/{id}' (id=${book.getId()})}"
