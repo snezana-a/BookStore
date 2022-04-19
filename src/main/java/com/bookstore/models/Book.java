@@ -25,14 +25,20 @@ public class Book {
 
     private Float price;
 
+    private String category;
+
+    private String image;
 
 
-    public Book(Integer isbn, String title, String author, Integer year, Float price) {
+
+    public Book(Integer isbn, String title, String author, Integer year, Float price, String category, String image) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.year = year;
         this.price = price;
+        this.category = category;
+        this.image = image;
     }
 
     public Book() {
@@ -76,5 +82,21 @@ public class Book {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

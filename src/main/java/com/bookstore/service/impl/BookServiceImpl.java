@@ -29,12 +29,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book create(Integer isbn, String title, String author, Integer year, Float price) {
-        return this.bookRepository.save(new Book(isbn, title, author, year, price));
+    public Book create(Integer isbn, String title, String author, Integer year, Float price, String category, String image) {
+        return this.bookRepository.save(new Book(isbn, title, author, year, price, category, image));
     }
 
     @Override
-    public Book update(Long id, Integer isbn, String title, String author, Integer year, Float price) {
+    public Book update(Long id, Integer isbn, String title, String author, Integer year, Float price, String category, String image) {
         Book book = this.findById(id);
 
         book.setIsbn(isbn);
@@ -42,6 +42,8 @@ public class BookServiceImpl implements BookService {
         book.setAuthor(author);
         book.setYear(year);
         book.setPrice(price);
+        book.setCategory(category);
+        book.setImage(image);
 
         return this.bookRepository.save(book);
     }

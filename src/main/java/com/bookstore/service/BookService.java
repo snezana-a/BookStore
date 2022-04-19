@@ -10,9 +10,9 @@ public interface BookService {
 
     Book findById(Long id);
 
-    Book create(Integer isbn, String title, String author, Integer year, Float price);
+    Book create(Integer isbn, String title, String author, Integer year, Float price, String category, String image);
 
-    Book update(Long id, Integer isbn, String title, String author, Integer year, Float price);
+    Book update(Long id, Integer isbn, String title, String author, Integer year, Float price, String category, String image);
 
     Book delete(Long id);
 

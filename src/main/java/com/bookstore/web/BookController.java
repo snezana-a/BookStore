@@ -68,11 +68,13 @@ public class BookController {
             @RequestParam String title,
             @RequestParam String author,
             @RequestParam Integer year,
-            @RequestParam Float price) {
+            @RequestParam Float price,
+            @RequestParam String category,
+            @RequestParam String image) {
         if (id != null) {
-            this.bookService.update(id, isbn, title, author,  year,  price);
+            this.bookService.update(id, isbn, title, author,  year,  price, category, image);
         } else {
-            this.bookService.create(isbn, title, author,  year,  price);
+            this.bookService.create(isbn, title, author,  year,  price, category, image);
         }
         return "redirect:/books";
     }
