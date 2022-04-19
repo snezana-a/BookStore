@@ -1,5 +1,6 @@
 package com.bookstore.service.impl;
 
+import com.bookstore.enumerations.Category;
 import com.bookstore.exceptions.BookNotFoundException;
 import com.bookstore.models.Book;
 import com.bookstore.repository.BookRepository;
@@ -29,12 +30,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book create(Integer isbn, String title, String author, Integer year, Float price) {
-        return this.bookRepository.save(new Book(isbn, title, author, year, price));
+    public Book create(Integer isbn, String title, String author, Integer year, Float price, Category category) {
+        return this.bookRepository.save(new Book(isbn, title, author, year, price,category));
     }
 
     @Override
-    public Book update(Long id, Integer isbn, String title, String author, Integer year, Float price) {
+    public Book update(Long id, Integer isbn, String title, String author, Integer year, Float price, Category category) {
         Book book = this.findById(id);
 
         book.setIsbn(isbn);
@@ -57,12 +58,20 @@ public class BookServiceImpl implements BookService {
     public List<Book> filter(String title, Integer year, Float price) {
         if (title == null && year == null && price == null) {
             return this.bookRepository.findAll();
-        } else if (title != null) {
+        }
+        if (title != null) {
             return this.bookRepository.findByTitle(title);
-        } else if (year != null) {
+        }
+        if (year != null) {
             return this.bookRepository.findByYear(year);
-        } else {
+        }
+        else{
             return this.bookRepository.findByPrice(price);
         }
+    }
+
+    @Override
+    public List<Book> filterByCategory(Category category) {
+        return  this.bookRepository.findByCategory(category);
     }
 }
